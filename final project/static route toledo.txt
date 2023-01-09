@@ -1,0 +1,94 @@
+Building configuration...
+
+Current configuration : 1027 bytes
+!
+version 15.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ToledoRouter
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:1B08:1C:1:1:1::/64
+ ipv6 rip process1 enable 
+ ipv6 enable
+!
+interface GigabitEthernet0/0/1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:1B08:1C:4:1:1::/64
+ ipv6 rip process1 enable 
+ ipv6 enable
+!
+interface GigabitEthernet0/0/2
+ media-type sfp
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2001:1B08:1C:5:1:1::/64
+ ipv6 rip process1 enable 
+ ipv6 enable
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ipv6 router rip process1
+!
+ip classless
+!
+ip flow-export version 9
+!
+ipv6 route 2001:1B08:1C:2::/64 2001:1B08:1C:4:1:2::
+ipv6 route 2001:1B08:1C:3::/64 2001:1B08:1C:5:1:2::
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
